@@ -138,10 +138,10 @@ def start(bot: Bot, update: Update, args: List[str]):
 
             elif args[0].lower() == "controlpanel":
                 control_panel(bot, update)
-    else: 
-        send_ping(bot,update)
-       else:
-        update.effective_message.reply_text("pong")                 
+        else:
+        	send_ping(bot,update)
+    else:
+    	update.effective_message.reply_text("pong")                 
 def pingme(message: Message):  
     start = datetime.now()
     a = await message.reply('Pong!')
