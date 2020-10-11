@@ -29,7 +29,7 @@ I'm 'ASSIST' bot and Anti-spam.
 Activate Anti-spam protection in your BM by this command : 
 /antispam on 
 
-My owner is [Dark] (t.me/dark047)
+My owner is @Dark047
 
 
 Click /help or Help button below to find out more about how to use me to my full potential.
