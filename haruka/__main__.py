@@ -24,14 +24,12 @@ PM_START = """Hello {}, my name is {}!
 
 You know how hard it is sometimes to manage group so here is the solution for you
 
-I'm group Silvermist bot and Anti-spam.
+I'm 'ASSIST' bot and Anti-spam.
 
 Activate Anti-spam protection in your BM by this command : 
 /antispam on 
 
-My owner is [Dark] (t.me/userge_dark)
-
-Special thanks to [this person](t.me/demogod_1) for helping me.
+My owner is [Dark] (t.me/dark047)
 
 
 Click /help or Help button below to find out more about how to use me to my full potential.
