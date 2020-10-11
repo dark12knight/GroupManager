@@ -24,22 +24,16 @@ PM_START = """Hello {}, my name is {}!
 
 You know how hard it is sometimes to manage group so here is the solution for you
 
-I'm group manager bot and Anti-spam for RR Players🃏
+I'm 'ASSIST' bot and Anti-spam.
 
 Activate Anti-spam protection in your BM by this command : 
 /antispam on 
 
-Made  by [DARK] @Dark047
+My owner is [Dark] (t.me/dark047)
 
-Thanks to ADITYA 
-
-Deploy a bot like me [now] (http://www.github.com/dark12knight/knight2.0)
 
 Click /help or Help button below to find out more about how to use me to my full potential.
-
-
 """
-
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -53,7 +47,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 GDPR = []
-    
+
 for module_name in ALL_MODULES:
     imported_module = importlib.import_module("haruka.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
@@ -106,7 +100,7 @@ def send_help(chat_id, text, keyboard=None):
 @run_async
 def test(bot: Bot, update: Update):
     #pprint(eval(str(update)))
-    #update.effective_message.reply_text("Hola tester! _I_ *have* markdown", parse_mode=ParseMode.MARKDOWN)
+    #update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
@@ -121,7 +115,7 @@ def start(bot: Bot, update: Update, args: List[str]):
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, tld(chat.id, "send-help").format(
                      dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(
-                         chat.id, "\nAll commands can either be used with / or !.\n"
+                         chat.id, "\nAll commands can either be used with `/` or `!`.\n"
                              )))
 
             elif args[0].lower().startswith("stngs_"):
@@ -138,10 +132,10 @@ def start(bot: Bot, update: Update, args: List[str]):
 
             elif args[0].lower() == "controlpanel":
                 control_panel(bot, update)
-         else:
-             send_start(bot, update)
-     else:
-         update.effective_message.reply_text("I'm Online ✔️")
+        else:
+            send_start(bot, update)
+    else:
+        update.effective_message.reply_text("I'm alive")
 
 def send_start(bot, update):
     #Try to remove old message
@@ -355,20 +349,20 @@ def help_button(bot: Bot, update: Update):
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
-            query.message.reply_text(tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with / or !.\n")),
+            query.message.reply_text(tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with `/` or `!`.\n")),
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_markup=InlineKeyboardMarkup(
                                          paginate_modules(chat.id, curr_page - 1, HELPABLE, "help")))
 
         elif next_match:
             next_page = int(next_match.group(1))
-            query.message.reply_text(tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with / or !.\n")),
+            query.message.reply_text(tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with `/` or `!`.\n")),
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_markup=InlineKeyboardMarkup(
                                          paginate_modules(chat.id, next_page + 1, HELPABLE, "help")))
 
         elif back_match:
-            query.message.reply_text(text=tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with / or !.\n")),
+            query.message.reply_text(text=tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(chat.id, "\nAll commands can either be used with `/` or `!`.\n")),
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_markup=InlineKeyboardMarkup(
                                          paginate_modules(chat.id, 0, HELPABLE, "help")))
@@ -417,7 +411,7 @@ def get_help(bot: Bot, update: Update):
 
     else:
         send_help(chat.id, tld(chat.id, "send-help").format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(
-            chat.id, "\nAll commands can either be used with / or !.\n"
+            chat.id, "\nAll commands can either be used with `/` or `!`.\n"
                 )))
 
 def send_settings(chat_id, user_id, user=False):
@@ -468,9 +462,7 @@ def settings_button(bot: Bot, update: Update):
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_markup=InlineKeyboardMarkup(
                                          [[InlineKeyboardButton(text="Back",
-                         
-
-                                       callback_data="stngs_back({})".format(chat_id))]]))
+                                                                callback_data="stngs_back({})".format(chat_id))]]))
 
         elif prev_match:
             chat_id = prev_match.group(1)
@@ -660,7 +652,8 @@ def process_update(self, update):
         except Exception:
             self.logger.exception('An uncaught error was raised while processing the update')
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     LOGGER.info("Successfully loaded")
     main()
